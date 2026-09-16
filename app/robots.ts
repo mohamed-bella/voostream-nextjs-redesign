@@ -1,3 +1,3 @@
 import type { MetadataRoute } from "next";
 export const dynamic="force-static";
-export default function robots():MetadataRoute.Robots{return{rules:{userAgent:"*",allow:"/"},sitemap:"https://iptvtilnorge.com/sitemap.xml",host:"https://iptvtilnorge.com"}}
+export default function robots():MetadataRoute.Robots{return{rules:{userAgent:"*",allow:"/"},sitemap:"https://voostream.com/sitemap.xml",host:"https://voostream.com"}}

@@ -1,6 +1,6 @@
 # IPTV til Norge
 
-Norwegian-language Next.js App Router site for `iptvtilnorge.com`.
+English-language Next.js App Router site for VooStream, prepared for static export to Cloudflare Workers.
 
 Run `npm install` and `npm run dev` for local development. `npm run build` creates a static export in `out/`.
 
