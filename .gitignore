@@ -1,0 +1,12 @@
+.sites-runtime/
+.dist/
+dist/
+.next/
+out/
+node_modules/
+node_modules.partial/
+*.tsbuildinfo
+npm-debug.log*
+*-check.png
+.DS_Store
+Thumbs.db

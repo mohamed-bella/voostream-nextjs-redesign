@@ -1,0 +1,25 @@
+import Link from "next/link";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { Faq } from "@/components/Faq";
+
+const plans = [
+  { name: "Trial", price: "Free", old: "", note: "24 hours · no card", message: "a%20free%2024-hour%20trial" },
+  { name: "1 month", price: "$15", old: "$20", note: "Full access for one month", message: "the%201-month%20plan" },
+  { name: "3 months", price: "$20", old: "$30", note: "Our most popular plan", message: "the%203-month%20plan" },
+  { name: "6 months", price: "$30", old: "$40", note: "Lower cost over time", message: "the%206-month%20plan" },
+  { name: "12 months", price: "$40", old: "$70", note: "Lowest monthly cost", message: "the%2012-month%20plan" },
+] as const;
+const features = ["11,000+ live channels", "Movies and series (VOD)", "EPG TV guide", "4K / FHD / HD", "All common devices", "Setup support"];
+const schema = { "@context": "https://schema.org", "@graph": [{ "@type": "Organization", "@id": "https://voostream.com/#organization", name: "VooStream", url: "https://voostream.com/" }, { "@type": "WebSite", "@id": "https://voostream.com/#website", name: "VooStream", url: "https://voostream.com/", inLanguage: "en" }, { "@type": "Service", name: "VooStream IPTV subscription", serviceType: "IPTV", areaServed: "Worldwide", offers: plans.filter((p) => p.price !== "Free").map((p) => ({ "@type": "Offer", name: p.name, price: p.price.replace("$", ""), priceCurrency: "USD", url: "https://voostream.com/#pricing" })) }] };
+
+export default function Home() { return <>
+  <a className="skip-link" href="#main-content">Skip to content</a><Header />
+  <main id="main-content">
+    <section className="hero" id="top"><div className="container hero-inner"><p className="eyebrow">VooStream IPTV</p><h1>IPTV that works when the match starts.</h1><p className="hero-lead">Watch live TV, sports, movies and series on the screens you already own. Start with a free 24-hour trial, then choose a plan that fits.</p><div className="hero-actions"><a className="button button-primary" href="#pricing">See plans</a><a className="button button-ghost" href="https://wa.me/33773528321?text=Hi%2C%20I%20would%20like%20a%20free%2024-hour%20IPTV%20trial." target="_blank" rel="noopener nofollow">Start free trial</a></div><p className="hero-note">Fast activation · Clear terms · Human support</p></div></section>
+    <section className="section pricing" id="pricing"><div className="container"><div className="section-head"><div><p className="kicker">IPTV subscription plans</p><h2>Simple pricing.</h2></div><p>One connection and the same channel list across paid plans. Prices in USD.</p></div><div className="price-grid">{plans.map((plan, index) => <article className={`price-card ${index === 2 ? "popular" : ""}`} key={plan.name}><p className="plan-label">{index === 2 ? "Most popular" : plan.name === "Trial" ? "Try it first" : "VooStream"}</p><h3>{plan.name}</h3>{plan.old && <p className="old-price">Was {plan.old}</p>}<p className="price">{plan.price}</p><p className="period">{plan.note}</p><a className="button button-plan" href={`https://wa.me/33773528321?text=Hi%2C%20I%20would%20like%20${plan.message}.`} target="_blank" rel="noopener nofollow">Request access</a></article>)}</div><ul className="feature-strip">{features.map((feature) => <li key={feature}>{feature}</li>)}</ul></div></section>
+    <section className="section simple-section" id="devices"><div className="container two-col"><div><p className="kicker">Use your usual screens</p><h2>One subscription. Your devices.</h2></div><div><p>Use your VooStream login with the player you prefer:</p><ul className="device-list"><li>Smart TV</li><li>Firestick</li><li>Android TV / Box</li><li>Phone, tablet and laptop</li><li>Web browser</li><li>MAG-compatible players</li></ul><Link className="text-link" href="/iptv-oppsett">Read the setup guide →</Link></div></div></section>
+    <section className="section simple-section muted" id="how-it-works"><div className="container"><p className="kicker">How it works</p><h2>Start in three steps.</h2><ol className="steps-grid"><li><b>1</b><div><h3>Choose a plan</h3><p>Try the service free or choose a longer subscription.</p></div></li><li><b>2</b><div><h3>Message our team</h3><p>We send a payment link and your login details.</p></div></li><li><b>3</b><div><h3>Open your player</h3><p>Follow the guide and start watching.</p></div></li></ol></div></section>
+    <section className="section simple-section" id="faq"><div className="container two-col"><div><p className="kicker">Questions</p><h2>Before you start.</h2><p>Need help with billing, login details or setup? <a className="text-link" href="https://wa.me/33773528321?text=Hi%2C%20I%20need%20help%20with%20VooStream%20IPTV." target="_blank" rel="noopener nofollow">Contact VooStream</a>.</p></div><Faq /></div></section>
+  </main><Footer /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />
+</>; }

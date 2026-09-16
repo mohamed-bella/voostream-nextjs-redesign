@@ -1,0 +1,8 @@
+import type { Metadata, Viewport } from "next";
+import { Manrope, Space_Grotesk } from "next/font/google";
+import "./globals.css";
+const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", display: "swap" });
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk", display: "swap" });
+export const metadata: Metadata = { metadataBase: new URL("https://voostream.com"), title: { default: "VooStream IPTV – Live TV, sports and movies", template: "%s | VooStream IPTV" }, description: "VooStream IPTV subscription with live TV, sports, movies and series. Start with a free 24-hour trial.", keywords: ["IPTV", "IPTV subscription", "live TV IPTV", "sports IPTV", "IPTV trial", "Firestick IPTV", "Smart TV IPTV"], applicationName: "VooStream", authors: [{ name: "VooStream" }], creator: "VooStream", publisher: "VooStream", alternates: { canonical: "/" }, icons: { icon: "/icon.svg", shortcut: "/icon.svg" }, openGraph: { type: "website", locale: "en_US", url: "/", siteName: "VooStream", title: "VooStream IPTV – Live TV, sports and movies", description: "Watch live TV, sports, movies and series on your devices. Free 24-hour IPTV trial." }, twitter: { card: "summary", title: "VooStream IPTV", description: "Live TV, sports, movies and series with a free 24-hour trial." }, robots: { index: true, follow: true } };
+export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#132b35" };
+export default function RootLayout({ children }: { children: React.ReactNode }) { return <html lang="en" className={`${manrope.variable} ${spaceGrotesk.variable}`}><body>{children}</body></html>; }
